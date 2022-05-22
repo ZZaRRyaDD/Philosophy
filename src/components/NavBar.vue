@@ -1,19 +1,12 @@
 <template>
-  <nav class="right-color navbar navbar-expand-md mb-5">
+  <nav class="right-color navbar navbar-expand-md mb-4">
     <div class="container">
-      <button
-        class="navbar-toggler navbar-toggler-right"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+      <a
+        style="cursor: pointer"
+        class="text-dark navbar-brand"
+        @click="$router.push({ name: 'Main' })"
+        >Буддизм</a
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-brand">Буддизм</div>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
     </div>
   </nav>
 </template>

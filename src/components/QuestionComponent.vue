@@ -1,14 +1,35 @@
 <template>
   <div class="d-flex flex-column container mx-100">
-    <div class="py-3 fs-5 w-100" style="font-family: 'Italic', sans-serif">
+    <div
+      class="py-3 w-100"
+      :class="{
+        'fs-6 lh-sm': this.width < 768,
+        'fs-5': this.width >= 768,
+      }"
+      style="font-family: 'Italic', sans-serif"
+    >
       {{ this.questions[this.$store.state.countAnsweredQuestions]["question"] }}
     </div>
-    <div class="px-3 d-flex flex-row row flex-nowrap">
+    <div
+      class="px-3 d-flex row"
+      :class="{
+        'flex-row': this.width >= 768,
+        'flex-column': this.width < 768,
+      }"
+    >
       <img
-        class="image col"
+        class="col"
         :src="this.getPath(this.$store.state.countAnsweredQuestions + 1)"
+        :class="{
+          'w-50': this.width >= 768,
+        }"
       />
-      <div class="d-flex flex-column mx-3 col">
+      <div
+        class="d-flex flex-column col"
+        :class="{
+          'mx-3': this.width >= 768,
+        }"
+      >
         <answer-component
           v-for="(weight, answer, index) in this.questions[
             this.$store.state.countAnsweredQuestions
@@ -23,13 +44,6 @@
   </div>
 </template>
 
-<style>
-.image {
-  width: 500px;
-  height: 300px;
-}
-</style>
-
 <script>
 import AnswerComponent from "@/components/AnswerComponent.vue";
 export default {
@@ -39,23 +53,24 @@ export default {
   },
   data() {
     return {
+      width: 0,
       questions: [
         {
-          "question": "Как вы относитесь к смертной казни, эвтаназии?",
+          question: "Как вы относитесь к смертной казни, эвтаназии?",
           answers: {
             Отрицательно: true,
             Положительно: false,
           },
         },
         {
-          "question": "Учение Будды основано на:",
+          question: "Учение Будды основано на:",
           answers: {
             "Многократном опыте": true,
             Вере: false,
           },
         },
         {
-          "question":
+          question:
             "Честные высказывания с вашей стороны преобладают над оскорблениями/лживыми высказываниями/сплетнями?",
           answers: {
             Согласен: true,
@@ -64,7 +79,7 @@ export default {
           },
         },
         {
-          "question":
+          question:
             "Какова цель человека, решившего связать свою жизнь с буддизмом?",
           answers: {
             "«вернуться к корню и открыть новое»": false,
@@ -73,7 +88,7 @@ export default {
           },
         },
         {
-          "question":
+          question:
             "Согласны ли вы, что 'в самые тяжелые времена Вселенная придет на помощь. Человеку не будет дано больше испытаний, чем он сможет вынести'?",
           answers: {
             Согласен: true,
@@ -82,7 +97,7 @@ export default {
           },
         },
         {
-          "question": "Какие элементы сделают любовь искренней:",
+          question: "Какие элементы сделают любовь искренней:",
           answers: {
             Доброжелательность: false,
             Сострадание: false,
@@ -92,14 +107,14 @@ export default {
           },
         },
         {
-          "question": "Каково ваше отношение к алкоголю?",
+          question: "Каково ваше отношение к алкоголю?",
           answers: {
             Отрицательно: true,
             Положительно: false,
           },
         },
         {
-          "question":
+          question:
             "Согласны ли вы с данными высказываниями Буддистов: 'Депрессию и отчаяние вызывает наша неспособность контролировать собственные желания. Медитация, строгое следование несложным правилам, а главное, принятие и использование своей боли в качестве ценного ресурса помогут вам достичь нирваны.'?",
           answers: {
             Согласен: true,
@@ -108,7 +123,7 @@ export default {
           },
         },
         {
-          "question":
+          question:
             "Прощаете ли вы человека, который вас обидел или держите на него злобу всю оставшуюся жизнь?",
           answers: {
             "Держу злобу": false,
@@ -116,7 +131,7 @@ export default {
           },
         },
         {
-          "question": "Вы живете:",
+          question: "Вы живете:",
           answers: {
             Будущим: false,
             Настоящим: true,
@@ -139,15 +154,27 @@ export default {
       if (
         this.$store.getters.getCountQuestions - 1 ===
         this.$store.getters.getCountAnsweredQuestions
-      ){
+      ) {
         this.$emit("openResult");
       } else if (
         this.$store.getters.getCountQuestions >
         this.$store.getters.getCountAnsweredQuestions
       ) {
         this.$store.commit("setCountAnsweredQuestions");
-      } 
+      }
     },
+  },
+  mounted() {
+    this.width = window.innerWidth;
+    window.addEventListener("resize", () => {
+      this.width = window.innerWidth;
+    });
+  },
+  updated() {
+    this.width = window.innerWidth;
+    window.addEventListener("resize", () => {
+      this.width = window.innerWidth;
+    });
   },
 };
 </script>

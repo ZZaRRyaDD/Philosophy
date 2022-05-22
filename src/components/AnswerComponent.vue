@@ -2,7 +2,7 @@
   <div>
     <button
       :data-value="weight"
-      class="w-100 btn btn-outline-info my-2 btn-sm text-center text-dark"
+      class="btn btn-outline-info w-100 my-2 btn-sm text-center text-dark"
     >
       {{ answer }}
     </button>

@@ -1,11 +1,26 @@
 <template>
-  <div class="modal-mask">
+  <div
+    class="modal-mask"
+    :class="{
+      'fs-6 lh-sm': this.width < 768,
+    }"
+  >
     <div class="modal-wrapper">
       <div
-        class="modal-container"
+        class="modal-container my-3"
         :class="{
-          'col-2': this.$route['fullPath'].split('/')[1] === 'question',
-          'col-6': this.$route['fullPath'].split('/')[1] !== 'question',
+          'col-3':
+            this.$route['fullPath'].split('/')[1] === 'question' &&
+            this.width >= 768,
+          'col-6':
+            this.$route['fullPath'].split('/')[1] === 'question' &&
+            this.width < 768,
+          'col-8':
+            this.$route['fullPath'].split('/')[1] !== 'question' &&
+            this.width < 768,
+          'col-5':
+            this.$route['fullPath'].split('/')[1] !== 'question' &&
+            this.width >= 768,
         }"
       >
         <header class="modal-header">
@@ -85,5 +100,22 @@ main {
 <script>
 export default {
   name: "ModalWindow",
+  data() {
+    return {
+      width: 0,
+    };
+  },
+  mounted() {
+    this.width = window.innerWidth;
+    window.addEventListener("resize", () => {
+      this.width = window.innerWidth;
+    });
+  },
+  updated() {
+    this.width = window.innerWidth;
+    window.addEventListener("resize", () => {
+      this.width = window.innerWidth;
+    });
+  },
 };
 </script>

@@ -70,13 +70,13 @@ export default {
   mounted() {
     this.$store.commit(
       "setAnswersByUser",
-      (localStorage.answersByUser === undefined)
+      localStorage.answersByUser === undefined
         ? 0
         : Number(localStorage.answersByUser)
     );
     this.$store.commit(
       "setCountAnsweredQuestionsInit",
-      (localStorage.countAnsweredQuestions === undefined)
+      localStorage.countAnsweredQuestions === undefined
         ? 0
         : Number(localStorage.countAnsweredQuestions)
     );
