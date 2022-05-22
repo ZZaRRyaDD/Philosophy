@@ -20,7 +20,7 @@
 
 <style scoped>
 .right-color {
-  background-color: #ffffe0;
+  background-color: #40c4e7;
 }
 </style>
 

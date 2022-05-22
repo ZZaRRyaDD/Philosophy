@@ -2,7 +2,7 @@
   <div>
     <button
       :data-value="weight"
-      class="w-100 btn btn-outline-warning my-2 btn-sm text-center"
+      class="w-100 btn btn-outline-info my-2 btn-sm text-center text-dark"
     >
       {{ answer }}
     </button>
@@ -15,7 +15,6 @@ export default {
   props: {
     weight: Boolean,
     answer: String,
-    questionNumber: Number,
   },
 };
 </script>

@@ -29,24 +29,6 @@
         ></button>
       </template>
       <template v-slot:main>
-        <nav id="navbar-example2" class="navbar navbar-light bg-light">
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link" href="#scrollspyHeading1">О проекте</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#scrollspyHeading2">Разработчики</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#scrollspyHeading3"
-                >Немного о буддизме</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#scrollspyHeading4">Полезные ссылки</a>
-            </li>
-          </ul>
-        </nav>
         <div
           data-bs-spy="scroll"
           data-bs-target="#navbar-example2"
@@ -54,16 +36,31 @@
           class="scrollspy-example px-2"
           tabindex="0"
         >
-          <h4 id="scrollspyHeading1">О проекте</h4>
+          <h4>Немного о буддизме</h4>
+          <p>
+            Буддизм — религиозно-философское учение о духовном пробуждении,
+            возникшее в середине I тысячелетия до н. э. в Древней Индии.
+            Основателем учения считается Сиддхартха Гаутама, впоследствии
+            получивший имя Будда Шакьямуни. Сами последователи этого учения
+            называли его «Дхарма» или «Буддхадхарма».
+          </p>
+          <h4>Разработчики</h4>
+          <p>Матвиенко Назар</p>
+          <h4>О проекте</h4>
           <p>
             Проект разработан с целью определения твоего уровня сходимости с
             идеями Буддизма
           </p>
-          <h4 id="scrollspyHeading2">Разработчики</h4>
-          <p>Матвиенко Назар</p>
-          <h4 id="scrollspyHeading3">Немного о буддизме</h4>
-          <p>...</p>
-          <h4 id="scrollspyHeading4">Полезные ссылки</h4>
+          <h4>Используемые технологии</h4>
+          <p>
+            <ul class="list-group w-50">
+              <li class="list-group-item">Vue 3</li>
+              <li class="list-group-item">Vuex 4</li>
+              <li class="list-group-item">Vue-router 4</li>
+              <li class="list-group-item">Bootstrap 5</li>
+            </ul>
+          </p>
+          <h4>Полезные ссылки</h4>
           <div class="text-wrap">
             <div
               class="text-wrap text-decoration-none w-45"

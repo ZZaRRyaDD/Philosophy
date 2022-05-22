@@ -22,18 +22,30 @@ export default createStore({
   },
   mutations: {
     setAnswersByUser(state, value) {
-      state.answersByUser += value;
+      state.answersByUser = value;
+      localStorage.setItem("answersByUser", Number(state.answersByUser));
     },
     zeroAnswers(state) {
       state.answersByUser = 0;
       state.countAnsweredQuestions = 0;
+      localStorage.setItem("countAnsweredQuestions", 0);
+      localStorage.setItem("answersByUser", 0);
+    },
+    setCountAnsweredQuestionsInit(state, value) {
+      state.countAnsweredQuestions = value;
+      localStorage.setItem(
+        "countAnsweredQuestions",
+        Number(state.countAnsweredQuestions)
+      );
     },
     setCountAnsweredQuestions(state) {
       if (state.countAnsweredQuestions < state.countQuestion) {
         state.countAnsweredQuestions++;
+        localStorage.setItem(
+          "countAnsweredQuestions",
+          Number(state.countAnsweredQuestions)
+        );
       }
     },
   },
-  actions: {},
-  modules: {},
 });

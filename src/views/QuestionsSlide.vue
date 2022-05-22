@@ -2,8 +2,6 @@
   <div class="main container">
     <div class="d-flex flex-column align-items-center">
       <question-component
-        :questionNumber="this.numberQuestion"
-        @nextQuestion="this.numberQuestion++"
         @openResult="this.openModalResult = true"
       ></question-component>
       <modal-result
@@ -51,7 +49,7 @@
 .main {
   padding: 20px 30px;
   background-color: #fff;
-  box-shadow: 5px 2px 2px black;
+  box-shadow: 2px 2px 10px 1px #40c4e7;
 }
 </style>
 
@@ -66,9 +64,22 @@ export default {
   },
   data() {
     return {
-      numberQuestion: 0,
       openModalResult: false,
     };
+  },
+  mounted() {
+    this.$store.commit(
+      "setAnswersByUser",
+      (localStorage.answersByUser === undefined)
+        ? 0
+        : Number(localStorage.answersByUser)
+    );
+    this.$store.commit(
+      "setCountAnsweredQuestionsInit",
+      (localStorage.countAnsweredQuestions === undefined)
+        ? 0
+        : Number(localStorage.countAnsweredQuestions)
+    );
   },
 };
 </script>
